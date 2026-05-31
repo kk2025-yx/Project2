@@ -1,0 +1,4 @@
+ID,scenarioType,fileName,status
+aa11bb22cc3344556677889900aabbcc,BusinessPartner,invoice_sample_01.pdf,Processing
+dd11bb22cc3344556677889900aabbcc,BusinessPartner,order_sheet_2026.json,Ready_for_SAP
+ee11bb22cc3344556677889900aabbcc,BusinessPartner,supplier_list.csv,AI_Error             

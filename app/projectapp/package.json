@@ -1,0 +1,27 @@
+{
+  "name": "projectapp",
+  "version": "0.0.1",
+  "description": "An SAP Fiori application.",
+  "scripts": {
+    "start":"fiori run --open 'test/flpSandbox.html'",
+    "build": "ui5 build --config ui5.yaml --clean-dest --dest dist",
+    "deploy-config": "npx -p @sap/ux-ui5-tooling fiori add deploy-config cf"
+  },
+  "sapux": [
+    "app/projectapp"
+  ],
+  "dependencies": {
+    "@sap/cds": "^7"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^4.0.33",
+    "@sap/ux-ui5-tooling": "1",
+    "@sap-ux/eslint-plugin-fiori-tools": "^10.0.0",
+    "eslint": "^8.0.0"
+  },
+  "ui5": {
+    "dependencies": [
+      "@sap/ux-ui5-tooling"
+    ]
+  }
+}
