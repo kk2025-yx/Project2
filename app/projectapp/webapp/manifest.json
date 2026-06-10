@@ -3,158 +3,59 @@
   "sap.app": {
     "id": "com.ai.adapter.projectapp",
     "type": "application",
-    "i18n": "i18n/i18n.properties",
-    "applicationVersion": {
-      "version": "0.0.1"
-    },
-    "title": "{{appTitle}}",
-    "description": "{{appDescription}}",
-    "resources": "resources.json",
-    "sourceTemplate": {
-      "id": "@sap/generator-fiori:lrop",
-      "version": "1.25.0",
-      "toolsId": "b35a7295-e816-4bcf-8888-b3901f8e6630"
-    },
+    "title": "Project App",
     "dataSources": {
       "mainService": {
         "uri": "/odata/v4/project2/",
         "type": "OData",
         "settings": {
-          "annotations": [],
           "odataVersion": "4.0"
         }
       }
-    },
-    "crossNavigation": {
-      "inbounds": {
-        "Action-display": {
-          "semanticObject": "Action",
-          "action": "display",
-          "title": "{{Action-display.flpTitle}}",
-          "signature": {
-            "parameters": {},
-            "additionalParameters": "allowed"
-          }
-        }
-      }
-    }
-  },
-  "sap.ui": {
-    "technology": "UI5",
-    "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
-    },
-    "deviceTypes": {
-      "desktop": true,
-      "tablet": true,
-      "phone": true
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.148.1",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
         "sap.fe.templates": {}
       }
     },
-    "contentDensities": {
-      "compact": true,
-      "cozy": true
-    },
     "models": {
-      "i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "settings": {
-          "bundleName": "com.ai.adapter.projectapp.i18n.i18n"
-        }
-      },
       "": {
         "dataSource": "mainService",
-        "preload": true,
         "settings": {
-          "operationMode": "Server",
-          "autoExpandSelect": true,
-          "earlyRequests": true
+          "operationMode": "Server"
         }
-      },
-      "@i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "uri": "i18n/i18n.properties"
       }
     },
-    "resources": {
-      "css": []
-    },
     "routing": {
-      "config": {},
       "routes": [
         {
           "pattern": ":?query:",
           "name": "IntegrationTasksList",
           "target": "IntegrationTasksList"
-        },
-        {
-          "pattern": "IntegrationTasks({key}):?query:",
-          "name": "IntegrationTasksObjectPage",
-          "target": "IntegrationTasksObjectPage"
         }
       ],
-      "targets": {                        
+      "targets": {
         "IntegrationTasksList": {
-    "type": "Component",
-    "id": "IntegrationTasksList",
-    "name": "sap.fe.templates.ListReport",
-    "options": {
-        "settings": {
-            "contextPath": "/Tasks",
-            "variantManagement": "Page",
-            "navigation": {
-                "IntegrationTasks": {
-                    "detail": {
-                        "route": "IntegrationTasksObjectPage"
-                    }
-                }
-            }
-        },
-    
-        "extensions": {
-            "sap.ui.controllerExtensions": {
-                "sap.fe.templates.ListReport.view.ListReport": {
-                    "controllerName": "com.ai.adapter.projectapp.ext.controller.ListReportExtension"
-                }
-            }
-        }
-    }
-},
-        "IntegrationTasksObjectPage": {
           "type": "Component",
-          "id": "IntegrationTasksObjectPage",
-          "name": "sap.fe.templates.ObjectPage",
+          "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "editableHeaderContent": false,
-              "contextPath": "/IntegrationTasks"
+              "contextPath": "/Tasks"
+            },
+            "extensions": {
+              "sap.ui.controllerExtensions": {
+                "sap.fe.templates.ListReport.view.ListReport": {
+                  "controllerName": "com.ai.adapter.projectapp.ext.controller.ListReportExtension"
+                }
+              }
             }
           }
         }
       }
-    }
-  },
-  "sap.fiori": {
-    "registrationIds": [],
-    "archeType": "transactional"
-  },
-  "sap.fe": {
-    "app": {
-      "enableLazyLoading": true
     }
   }
 }
