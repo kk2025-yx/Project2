@@ -3,7 +3,20 @@ using { my.ai.adapter as my } from '../db/schema';
 
 service Project2Service {
 
-    entity Tasks as projection on my.IntegrationTasks actions {
-        action processFile (scenarioType : String, fileName : String) returns String;
-    };
+    entity Tasks as projection on my.IntegrationTasks;
+
+    action uploadTask (
+        scenarioType : String,
+        sourceSystem : String,
+        fileName     : String,
+        fileContent  : String,
+        rawInputJson : String
+    ) returns Tasks;
+
+    action triggerUpload (
+        fileName     : String,
+        scenarioType : String,
+        sourceSystem : String,
+        fileContent  : LargeString
+    ) returns String;
 }

@@ -3,24 +3,47 @@
   "sap.app": {
     "id": "com.ai.adapter.projectapp",
     "type": "application",
-    "title": "Project App",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
     "dataSources": {
       "mainService": {
         "uri": "/odata/v4/project2/",
         "type": "OData",
         "settings": {
+          "annotations": [],
           "odataVersion": "4.0"
         }
       }
     }
   },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
   "sap.ui5": {
+    "flexEnabled": false,
+    "componentPreload": false,
     "dependencies": {
+      "minUI5Version": "1.136.0",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
-        "sap.fe.templates": {}
+        "sap.fe.templates": {},
+        "sap.fe.core": {},
+        "sap.ui.unified": {}
       }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
     },
     "models": {
       "": {
@@ -28,30 +51,63 @@
         "settings": {
           "operationMode": "Server"
         }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
       }
     },
     "routing": {
       "routes": [
         {
           "pattern": ":?query:",
-          "name": "IntegrationTasksList",
-          "target": "IntegrationTasksList"
+          "name": "TasksList",
+          "target": "TasksList"
+        },
+        {
+          "pattern": "Tasks({key}):?query:",
+          "name": "TasksObjectPage",
+          "target": "TasksObjectPage"
         }
       ],
       "targets": {
-        "IntegrationTasksList": {
+        "TasksList": {
           "type": "Component",
+          "id": "TasksList",
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "contextPath": "/Tasks"
-            },
-            "extensions": {
-              "sap.ui.controllerExtensions": {
-                "sap.fe.templates.ListReport.view.ListReport": {
-                  "controllerName": "com.ai.adapter.projectapp.ext.controller.ListReportExtension"
+              "contextPath": "/Tasks",
+              "variantManagement": "Page",
+              "navigation": {
+                "Tasks": {
+                  "detail": {
+                    "route": "TasksObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "actions": {
+                    "UploadTask": {
+                      "press": "com.ai.adapter.projectapp.ext.fragment.UploadHandler.openDialog",
+                      "text": "Upload",
+                      "requiresSelection": false,
+                      "visible": true
+                    }
+                  }
                 }
               }
+            }
+          }
+        },
+        "TasksObjectPage": {
+          "type": "Component",
+          "id": "TasksObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/Tasks"
             }
           }
         }

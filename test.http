@@ -1,9 +1,10 @@
 
-POST http://localhost:4004/odata/v4/project2/IntegrationTasks(ID=c8a3f890-bc47-4f1d-b8d4-51bc4b51c111)/Project2Service.processFile
+POST http://localhost:4004/odata/v4/project2/triggerUpload
 Content-Type: application/json
 
 {
-    "scenarioType": "Scenario_1",
-    "fileName": "test.pdf",
-    "fileContent": "base64_content_placeholder"
+  "fileName": "test.csv",
+  "scenarioType": "BusinessPartner",
+  "sourceSystem": "crm",
+  "fileContent": "Customer,Amount\nACME,100"
 }

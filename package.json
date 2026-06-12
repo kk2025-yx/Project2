@@ -9,20 +9,25 @@
     "@sap/low-code-event-handler": "^1.2.5",
     "@sap/xsenv": ">=3.3.2 <3.3.3",
     "@sap/xssec": "^4.13.0",
+    "axios": "^1.17.0",
+    "form-data": "^4.0.5",
     "hdb": "^2.27.1",
     "passport": "^0.7.0"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2.4",
+    "@sap/cds-dk": "^9.9.2",
     "@sap/dev-cap-tools": "^1.31.0",
     "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
     "start": "cds-serve",
+    "prewatch": "pids=$(lsof -ti :4004 2>/dev/null); [ -n \"$pids\" ] && kill $pids 2>/dev/null || true",
+    "watch": "cds watch --port 4004",
     "start-local": "npm run generate-entry-point && npm run cds-watch",
     "generate-entry-point": "dev-cap-tools gen-entrypoint",
-    "cds-watch": "cds watch --open",
-    "watch-projectapp": "cds watch --open com.ai.adapter.projectapp/index.html?sap-ui-xx-viewCache=false --livereload false"
+    "cds-watch": "cds watch --port 4004 --open",
+    "watch-projectapp": "cds watch --port 4004 --open com.ai.adapter.projectapp/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {

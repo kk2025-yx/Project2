@@ -1,4 +1,4 @@
-ID,scenarioType,fileName,status
-aa11bb22cc3344556677889900aabbcc,BusinessPartner,invoice_sample_01.pdf,Processing
-dd11bb22cc3344556677889900aabbcc,BusinessPartner,order_sheet_2026.json,Ready_for_SAP
-ee11bb22cc3344556677889900aabbcc,BusinessPartner,supplier_list.csv,AI_Error             
+ID,fileName,scenarioType,sourceSystem,status,mappingResult,errorMessage
+aa11bb22cc3344556677889900aabbcc,invoice_sample_01.pdf,BusinessPartner,crm,PROCESSING,,
+dd11bb22cc3344556677889900aabbcc,order_sheet_2026.json,BusinessPartner,crm,COMPLETED,"{""mapped"":true}",
+ee11bb22cc3344556677889900aabbcc,supplier_list.csv,BusinessPartner,generic,FAILED,,AI service unavailable

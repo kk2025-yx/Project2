@@ -53,17 +53,6 @@
       "options": {
         "cwd": "${workspaceFolder}"
       }
-    },
-    {
-      "type": "dpt.ptdeploy",
-      "label": "Deploy project2",
-      "taskType": "Deploy"
-    },
-    {
-      "type": "dpt.ptdeploy",
-      "label": "Enable Discovery and Deploy project2",
-      "taskType": "Deploy",
-      "enableDiscovery": "true"
     }
   ]
 }

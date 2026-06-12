@@ -1,26 +1,19 @@
-using { managed } from '@sap/cds/common'; 
+using { managed } from '@sap/cds/common';
 
 
-namespace my.ai.adapter; 
+namespace my.ai.adapter;
 
 
 entity IntegrationTasks : managed {
-    key ID : UUID;
-    scenarioType : String;
-    fileName     : String;
-    status       : String;
+    key ID            : UUID;
+    fileName          : String;
+    scenarioType      : String;
+    sourceSystem      : String;
+    status            : String;
+    resultJson        : LargeString;
+    mappingResult     : LargeString;
+    errorMessage      : String;
     @Core.MediaType : 'application/octet-stream'
-    content : LargeBinary;
+    @UI.Hidden
+    content           : LargeBinary;
 }
-annotate Project2Service.Tasks with @(
-    UI.LineItem : [
-        { Value: fileName },
-        { Value: status },
-        { Value: createdAt }
-    ],
-    UI.FieldGroup #Upload : {
-        Data : [
-            { Value: content }
-        ]
-    }
-);
